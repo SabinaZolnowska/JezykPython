@@ -1,0 +1,68 @@
+Rozdział 1: OPIS OGÓLNY
+	Podrozdział 1.1: Nazwa programu.
+		ColoringGraph2
+
+	Podrozdział 1.2 Poruszany problem.
+		Program służy do kolorowania wierzchołków w grafie z zawarciem testów sprawdzających poprawność działania.
+
+	Podrozdział 1.3. Użytkownik docelowy.
+		Dowolna osoba znająca podstawowe wiadomości o grafach  i ich reprezentacji macierzowej oraz języku python.
+
+Rozdział 2:OPIS FUNCKJONALNOŚCI
+
+	Podrozdział 2.1 Jak korzystać z programu?
+		Osoby chcące skorzystać z programu do wyszukania kolorów wierzchołków dla własnego grafu który jest grafem spójnym i nieskierowanym powinny dopisać zmienną przechowującą jego postać macierzową w kodzie przed testami oraz wywołać funkcję LF podając stworzoną wcześniej zmienną jako argument tej funkcji.
+
+	Podrozdział 2.2 Uruchomianie programu.
+		Uruchomić program należy pobrać 2.x.x wersję pythona ze strony domowej www.python.org a nastęnie za pomocą konsoli/terminalu przejść do folderu/katalogu zawierającego plik ColoringGraph2.py i uruchomić go za pomocą komendy: python ColoringGraph2.py
+
+	Podrozdział 2.3 Możliwości programu
+		1. Sprawdzenie czy graf jest nieskierowanym.
+		2. Sprawdzenie czy graf jest spójnym.
+		3. Sprawdzenie czy graf nie jest grafem ważonym.
+		4. Obliczenie liczbu krawędzi wychodzących z danego wierzchołka z pominięciem wychodzących do samych siebie.
+		5. Szukanie indeksu największego elementu na liście 
+		6. Pokolorowanie wierzchołków grafu z wykorzystaniem algorytmu LargeFirst oraz algorytmu zachłannego
+
+Rozdział 3: FORMAT DANYCH I STRUKTURA PLIKÓW
+
+	Podrozdział 3.1 Struktura katalogów
+		Projekt nie zawiera struktury katalogów. Brak danych wejściowych programu  podawanych podczas uruchamiania. Dane wyjściowe programu są wyświetlane w terminalu/konsoli i nie są zapisywane.
+
+	Podrozdział 3.2 Opis zastosowania zmiennych globalnych.
+		1. graph - macierz kwadratowa wypełniona 1 i 0 będąca macierzową reprezentacją grafu. 1 oznacza połączenie między grafami, 0 jego brak.
+		
+	Podrozdział 3.3 Opis działania funkcji, ich dane wejściowe(arguemnty) oraz dane wyjściowe(return)	
+		1. if_undirected_graph(graph) -funkcja  sprawdzająca czy graf jest nieskierowany, 
+			1.1 argument: graf przestawiony za pomocą macierzy kwadratowej
+			1.2 return: True jeśli graf jest nieskierowany/False jeśli graf jest skierowany
+		2. if_connected_graph(graph,i=0,visited=None) - funkcja sprawdzająca czy graf jest spójny
+			2.1 argument: graf przedstawiony za pomocą macierzy kwadratowej
+			2.2 return: True jeśli graf jest spójny/False jeśli graf jest niespójny
+		3. if_not_weighted_graph(graph) - funkcja sprawdzająca czy graf nie jest grafem ważonym
+			3.1 argument: graf przedstawiony za pomocą macierzy kwadratowej
+			3.2 return: True jeśli graf nie jest ważony/False jeśli graf jest ważony
+		4. degrees_of_nodes(graph) - funkcja obliczająca liczbę krawędzi wychodzących z danego wierzchołka z pominięciem wychodzących do samych siebie
+			4.1 argument: graf przedstawiony za pomocą macierzy kwadratowej
+			4.2 return: lista, na której są zapisane poszczególnie stopnie wierzchołków
+		5. find_max(L, left, right) - funkcja szukająca najwiekszego elementu na liście
+			5.1 argument1: lista zawierająca intiger
+			5.2 argument2: index początkowy  fragmentu listy
+			5.3 argument3: index koncowy fragmentu listy
+			5.4 return: index listy, na którym znajuje się największa wartość
+		6. LF(graph) - funkcja kolorująca wierzchołki w grafie z zastosowaniem algorytmu LargeFirst oraz algorytmu zachłannego
+			6.1 argument: graf przedstawiony za pomocą macierzy kwadratowej
+			6.2 return: lista kolorów, na jakie pokolorowano wierzchołki albo rzucenie wyjątku w przypadku podania błędnego grafu
+ 
+Rozdział 4: SCENARIUSZ DZIAŁANIA PROGRAMU
+		Podrozdział 4.1 Scenariusz ogólny. (bez wprowadzania zmian w kodzie przez użytkownika)
+			1. Uruchomienie
+			2. Wykonanie testów
+			3. Zakończenie działania programu
+		
+		Podrozdział 4.2 Ekrany działania programu.
+			Okno konsoli/terminalu, w którym będą wyświetlanie dane wyjściowe funckji.
+		
+Rozdział 5: TESTOWANIE
+		Podrozdział 5.1 Ogólny przebieg testowania
+			Do przetestowania kodu użyto unittest z wykorzystaniem skrajnych przypadków. 
