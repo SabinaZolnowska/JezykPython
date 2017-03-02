@@ -1,0 +1,30 @@
+Czas sortowania dla selectsort i 100 elementow = 0.0
+Czas sortowania dla insertsort i 100 elementow = 0.00200009346008
+Czas sortowania dla bubblesort i 100 elementow = 0.0019998550415
+Czas sortowania dla shakersort i 100 elementow = 0.00100016593933
+Czas sortowania dla quicksort i 100 elementow = 0.0
+Czas sortowania dla mergesort i 100 elementow = 0.000999927520752
+Czas sortowania dla selectsort i 1000 elementow = 0.055999994278
+Czas sortowania dla insertsort i 1000 elementow = 0.230000019073
+Czas sortowania dla bubblesort i 1000 elementow = 0.1859998703
+Czas sortowania dla shakersort i 1000 elementow = 0.160000085831
+Czas sortowania dla quicksort i 1000 elementow = 0.00600004196167
+Czas sortowania dla mergesort i 1000 elementow = 0.00600004196167
+Czas sortowania dla selectsort i 10000 elementow = 5.4240000248
+Czas sortowania dla insertsort i 10000 elementow = 23.3010001183
+Czas sortowania dla bubblesort i 10000 elementow = 18.7319998741
+Czas sortowania dla shakersort i 10000 elementow = 16.3460001945
+Czas sortowania dla quicksort i 10000 elementow = 0.0809998512268
+Czas sortowania dla mergesort i 10000 elementow = 0.095999956131
+Czas sortowania dla selectsort i 100000 elementow = 823.516000032
+Czas sortowania dla insertsort i 100000 elementow = 2265.01799989
+Czas sortowania dla bubblesort i 100000 elementow = 2178.37800002
+Czas sortowania dla shakersort i 100000 elementow = 1819.15300012
+Czas sortowania dla quicksort i 100000 elementow = 0.884000062943
+Czas sortowania dla mergesort i 100000 elementow = 1.05599999428
+
+Pomimo pozostawienia pracującego programu na wiele godzin w tle nie udało mi się wyznaczyć czasu dla tablicy 1 000 000 elementów różnich, losowo rozmieszczonych liczb.
+Po zakomentowaniu selectsort, insertsort i bubblesort i shakersort dla tablicy złożonej z 1 000 000 elementów udało się uzyskać:
+
+Czas sortowania dla quicksort i 1000000 elementow = 8.59300017357
+Czas sortowania dla mergesort i 1000000 elementow = 10.2509999275 
