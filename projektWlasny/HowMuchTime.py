@@ -4,9 +4,14 @@ import datetime
 
 class HowMuchTime:
 
-    def __init__(self, someday=datetime.datetime(1990,01,01)):
-        self.someday = someday
-        self.today = datetime.datetime.now()
+    def __init__(self, someday=datetime.datetime(1990, 01, 01), today=datetime.datetime.now()):
+        if someday<datetime.datetime(1901, 1, 1):
+            raise ValueError("Podano datę, która nie mieści się w przedziale")
+        if someday <= today:
+            self.someday = someday
+            self.today = today
+        else:
+            raise ValueError("Podano datę z przyszłości")
 
     def howManyYears(self):
         monthdiff = self.today.month - self.someday.month
@@ -93,7 +98,7 @@ class HowMuchTime:
 
     def howManyWeeks(self):
         delta = self.today - self.someday
-        return int(delta.days/7)
+        return delta.days/7
 
 
     def howManyDays(self):
@@ -104,7 +109,7 @@ class HowMuchTime:
         return int(self.howManySeconds()/3600)
 
     def howManyMinutes(self):
-        return int(self.howManySeconds()/60)
+        return self.howManySeconds()/60
 
     def howManySeconds(self):
         delta = self.today - self.someday
@@ -125,6 +130,8 @@ class HowMuchTime:
     def howManyPercentInTwentyFirstCentury(self):
         if self.someday > datetime.datetime(2001, 01, 01):
             return 100
+        if self.today < datetime.datetime(2001, 01, 01):
+            return 0
         total = self.howManyDays()
         inTwentyFirstCentury = (self.today - datetime.datetime(2001, 01, 01)).days
         return round(float(inTwentyFirstCentury)/total*100,2)
@@ -141,10 +148,11 @@ class HowMuchTime:
             if self.today.month ==2:
                 if self.today.day < 29:
                     yeart = self.today.year - 4
-            yeart = self.today.year
-        for i in range(1,4):
-            if ((self.today.year - i) % 4) == 0:
-                yeart = self.today.year - i
+                yeart = self.today.year
+        else:
+            for i in range(1,4):
+                if ((self.today.year - i) % 4) == 0:
+                    yeart = self.today.year - i
         if self.someday.year%4 == 0:
             if self.someday.month > 2:
                 years = self.someday.year + 4
@@ -153,9 +161,10 @@ class HowMuchTime:
             if self.someday.month == 2:
                 if self.someday.day <= 29:
                     years = self.someday.year
-        for i in range(1,4):
-            if ((self.someday.year + i) % 4) == 0:
-                years = self.someday.year + i
+        else:
+            for i in range(1,4):
+                if ((self.someday.year + i) % 4) == 0:
+                    years = self.someday.year + i
 
         if years <= yeart:
             return (yeart-years)/4 + 1
@@ -198,10 +207,17 @@ class HowMuchTime:
             catTime.append(year*24 + year/(monthsInYear/2))
             catTime.append(year*25)
 
-            return int(self.lagrangeInterpolation(humanTime, catTime, sdays)/year)
-        return int(((sdays-year*2)/year)*4 + 25)
+            x=self.lagrangeInterpolation(humanTime, catTime, sdays)/year
+            if x - int(x) >= 0.95:
+                return int(round(x))
+            return int(x)
 
-    def lagrangeInterpolation (xs, ys, x):
+        x= ((sdays-year*2)/year)*4 + 25
+        if x - int(x) >= 0.95:
+            return int(round(x))
+        return int(x)
+
+    def lagrangeInterpolation (self, xs, ys, x):
         y = 0.0
         for i in range(0, len(xs)):
             t = 1.0
@@ -210,3 +226,5 @@ class HowMuchTime:
                     t=t*((x-xs[j])/(xs[i]-xs[j]))
             y = y + t*ys[i]
         return y
+
+
